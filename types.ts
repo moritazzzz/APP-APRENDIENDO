@@ -96,3 +96,12 @@ export interface ExerciseResult {
   status: 'correct' | 'improving' | 'repeat';
   score: number;
 }
+
+declare global {
+  interface Window {
+    aistudio: {
+      hasSelectedApiKey: () => Promise<boolean>;
+      openSelectKey: () => Promise<void>;
+    };
+  }
+}

@@ -14,7 +14,15 @@ interface LayoutProps {
 const Layout: React.FC<LayoutProps> = ({ children, title, role = 'therapist', stars = 0 }) => {
   const navigate = useNavigate();
   const { avatar } = useAvatar();
-  const childBgUrl = "https://img.freepik.com/premium-vector/nature-landscape-with-kids-playing-park_29937-4340.jpg";
+  const childBgUrl = "https://images.unsplash.com/photo-1500622764614-be3c1783fe95?auto=format&fit=crop&w=1920&q=80";
+
+  const handleOpenKey = async () => {
+    if (window.aistudio && window.aistudio.openSelectKey) {
+      await window.aistudio.openSelectKey();
+    } else {
+      alert("La configuración de API no está disponible en este entorno.");
+    }
+  };
 
   const containerStyle: React.CSSProperties = {
     height: '100dvh',
@@ -73,6 +81,14 @@ const Layout: React.FC<LayoutProps> = ({ children, title, role = 'therapist', st
                 >⭐</motion.span>
                 <span className="text-[18px]">{stars}</span>
              </motion.div>
+           )}
+           {role === 'therapist' && (
+             <button 
+               onClick={handleOpenKey}
+               className="hidden md:flex items-center gap-2 text-[10px] md:text-xs bg-blue-50 hover:bg-blue-100 text-blue-600 px-3 py-2 rounded-xl transition-all font-bold border border-blue-200"
+             >
+               <span>⚙️ Configurar IA</span>
+             </button>
            )}
            {role === 'therapist' && (
              <button 

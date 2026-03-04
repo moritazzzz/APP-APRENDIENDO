@@ -5,7 +5,7 @@ import LottiePlayer from '../components/LottiePlayer';
 import { LOTTIE_URLS } from '../constants';
 
 const LoginPage: React.FC = () => {
-  const bgImage = "https://img.freepik.com/premium-vector/nature-landscape-with-kids-playing-park_29937-4340.jpg";
+  const bgImage = "https://images.unsplash.com/photo-1500622764614-be3c1783fe95?auto=format&fit=crop&w=1920&q=80";
   const [mascot, setMascot] = useState(LOTTIE_URLS.mascot_happy);
 
   return (

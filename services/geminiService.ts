@@ -8,7 +8,7 @@ export const generateStreamingExercise = async (
   config: { duration: number; repetitions: number; reward: RewardTrigger; history?: string[] },
   onChunk: (chunk: string) => void
 ) => {
-  const apiKey = process.env.API_KEY || "";
+  const apiKey = process.env.API_KEY || process.env.GEMINI_API_KEY || "";
   const timestamp = new Date().getTime();
   const randomSeed = Math.random().toString(36).substring(7);
 
@@ -119,8 +119,8 @@ export const generateExerciseImage = async (keyword: string, age: number): Promi
   const cacheKey = `${keyword}_${age < 5 ? 'young' : 'old'}`;
   if (imageCache[cacheKey]) return imageCache[cacheKey];
 
-  const apiKey = process.env.API_KEY || "";
-  if (!apiKey) return "https://img.freepik.com/premium-vector/cute-dog-cartoon_1033285-1.jpg";
+  const apiKey = process.env.API_KEY || process.env.GEMINI_API_KEY || "";
+  if (!apiKey) return "https://images.unsplash.com/photo-1534361960057-19889db9621e?auto=format&fit=crop&w=800&q=80";
 
   const ai = new GoogleGenAI({ apiKey });
   
@@ -145,8 +145,8 @@ export const generateExerciseImage = async (keyword: string, age: number): Promi
         return b64;
       }
     }
-    return `https://loremflickr.com/800/800/${encodeURIComponent(keyword)}/all`;
+    return `https://loremflickr.com/800/800/${encodeURIComponent(keyword.split(' ').slice(0, 3).join(','))}`;
   } catch (error) {
-    return `https://loremflickr.com/800/800/${encodeURIComponent(keyword)}/all`;
+    return `https://loremflickr.com/800/800/${encodeURIComponent(keyword.split(' ').slice(0, 3).join(','))}`;
   }
 };
