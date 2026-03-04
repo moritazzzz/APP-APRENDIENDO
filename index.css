@@ -1,0 +1,91 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Quicksand", ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  --app-height: 100dvh;
+}
+
+body {
+  font-family: 'Quicksand', sans-serif;
+  background: #f0f9ff;
+  height: var(--app-height);
+  width: 100vw;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  touch-action: manipulation;
+}
+
+#root {
+  height: 100%;
+  width: 100%;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 10px;
+}
+
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.lottie-2d-drawing svg {
+  filter: url(#hand-drawn-filter) drop-shadow(4px 4px 0px rgba(0,0,0,0.05));
+}
+
+.lottie-sticker svg {
+  filter: 
+    drop-shadow(3px 0 0 white) 
+    drop-shadow(-3px 0 0 white) 
+    drop-shadow(0 3px 0 white) 
+    drop-shadow(0 -3px 0 white)
+    drop-shadow(5px 5px 15px rgba(0,0,0,0.1));
+}
+
+.text-fluid-title {
+  font-size: clamp(1.5rem, 5vh, 3.5rem);
+}
+
+@media print {
+  header, .print\:hidden, nav {
+    display: none !important;
+  }
+  body, #root, main, .custom-scrollbar {
+    background: white !important;
+    overflow: visible !important;
+    height: auto !important;
+    width: auto !important;
+    position: static !important;
+  }
+  .max-w-6xl {
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  .bg-slate-50, .bg-blue-50, .bg-red-50 {
+    background-color: white !important;
+    border: 1px solid #e2e8f0 !important;
+  }
+  .shadow-sm, .shadow-md, .shadow-lg, .shadow-xl, .shadow-2xl {
+    box-shadow: none !important;
+  }
+  .rounded-\[2\.5rem\], .rounded-3xl, .rounded-2xl {
+    border-radius: 0.5rem !important;
+  }
+  .recharts-responsive-container {
+    min-width: 500px !important;
+    min-height: 300px !important;
+  }
+}

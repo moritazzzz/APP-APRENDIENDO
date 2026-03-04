@@ -1,0 +1,9 @@
+{
+  "name": "NUEVA IDEA",
+  "description": "Una plataforma integral de terapia del lenguaje para niños con Necesidades Educativas Especiales, combinando gamificación animada e inteligencia artificial generativa para un aprendizaje personalizado.",
+  "requestFramePermissions": [
+    "microphone",
+    "camera",
+    "geolocation"
+  ]
+}
